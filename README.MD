@@ -53,7 +53,7 @@ poetry install --dev
 
 Here is the content of a sample HTML page:
 
-[Link to Sample HTML Page](https://github.com/ShanKonduru/MyUSAVisitsPlot/blob/master/visited_places_map.html)
+[Link to Sample HTML Page](https://github.com/ShanKonduru/MyUSAVisitsPlot/html_files/generate_geo_spatial_graph.html)
 
 
 ## License
