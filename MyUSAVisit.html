@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6993ca1695d3f827630bf6e03531ffdb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_6993ca1695d3f827630bf6e03531ffdb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6993ca1695d3f827630bf6e03531ffdb = L.map(
+                "map_6993ca1695d3f827630bf6e03531ffdb",
+                {
+                    center: [37.0, -95.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_810b8f95bd59331935cdf453a710bbd4 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_810b8f95bd59331935cdf453a710bbd4.addTo(map_6993ca1695d3f827630bf6e03531ffdb);
+        
+    
+            var marker_cluster_2838c61d0759f6a79e13d667febaf797 = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var marker_507b3cad0e9e3373bdee4c4896d898b1 = L.marker(
+                [44.44637732594059, -100.22852335515655],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_bf5fdd36c2d47d817b27fda975e223f0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_507b3cad0e9e3373bdee4c4896d898b1.setIcon(icon_bf5fdd36c2d47d817b27fda975e223f0);
+        
+    
+        var popup_a39fc26bef419a449f70f61fead70a82 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae8a21bf5890acd32a3f369ace67a1aa = $(`<div id="html_ae8a21bf5890acd32a3f369ace67a1aa" style="width: 100.0%; height: 100.0%;">State: SD Total Days Stayed: 360.0</div>`)[0];
+                popup_a39fc26bef419a449f70f61fead70a82.setContent(html_ae8a21bf5890acd32a3f369ace67a1aa);
+            
+        
+
+        marker_507b3cad0e9e3373bdee4c4896d898b1.bindPopup(popup_a39fc26bef419a449f70f61fead70a82)
+        ;
+
+        
+    
+    
+            var marker_d3b144d40cd367603b39c4259a809c51 = L.marker(
+                [44.44637732594059, -100.22852335515655],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_f3f36d29a8b312af52737669fc8bde14 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_d3b144d40cd367603b39c4259a809c51.setIcon(icon_f3f36d29a8b312af52737669fc8bde14);
+        
+    
+        var popup_59b5c919d248ad51cb8d53a15b2df756 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_49b1a487ae758778660af019a59ae9fe = $(`<div id="html_49b1a487ae758778660af019a59ae9fe" style="width: 100.0%; height: 100.0%;">State: SD Total Days Stayed: 228.0</div>`)[0];
+                popup_59b5c919d248ad51cb8d53a15b2df756.setContent(html_49b1a487ae758778660af019a59ae9fe);
+            
+        
+
+        marker_d3b144d40cd367603b39c4259a809c51.bindPopup(popup_59b5c919d248ad51cb8d53a15b2df756)
+        ;
+
+        
+    
+    
+            var marker_abfbcb18dab1fa6a646caa5bc559a545 = L.marker(
+                [43.69169024392466, -71.56273394862772],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_dd849fa7ff9551e3a465b6a2d3ed8f7d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_abfbcb18dab1fa6a646caa5bc559a545.setIcon(icon_dd849fa7ff9551e3a465b6a2d3ed8f7d);
+        
+    
+        var popup_73f5a789c840833f81f56a5ad1b95412 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_77b0ee2ef2db34aa000d200758a01679 = $(`<div id="html_77b0ee2ef2db34aa000d200758a01679" style="width: 100.0%; height: 100.0%;">State: NH Total Days Stayed: 229.0</div>`)[0];
+                popup_73f5a789c840833f81f56a5ad1b95412.setContent(html_77b0ee2ef2db34aa000d200758a01679);
+            
+        
+
+        marker_abfbcb18dab1fa6a646caa5bc559a545.bindPopup(popup_73f5a789c840833f81f56a5ad1b95412)
+        ;
+
+        
+    
+    
+            var marker_8b4848f5c213ef3fba5ecc93cba852f9 = L.marker(
+                [43.69169024392466, -71.56273394862772],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_49c7e57906e148ad70f2b76584a58d37 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_8b4848f5c213ef3fba5ecc93cba852f9.setIcon(icon_49c7e57906e148ad70f2b76584a58d37);
+        
+    
+        var popup_de3afe737a6e7a48c6f82928cd36f614 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fd616ceca75462891bd228bc11332597 = $(`<div id="html_fd616ceca75462891bd228bc11332597" style="width: 100.0%; height: 100.0%;">State: NH Total Days Stayed: 274.0</div>`)[0];
+                popup_de3afe737a6e7a48c6f82928cd36f614.setContent(html_fd616ceca75462891bd228bc11332597);
+            
+        
+
+        marker_8b4848f5c213ef3fba5ecc93cba852f9.bindPopup(popup_de3afe737a6e7a48c6f82928cd36f614)
+        ;
+
+        
+    
+    
+            var marker_cca5a2f6a48dc91b31fea21a8bf85dcf = L.marker(
+                [43.69169024392466, -71.56273394862772],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_e3309a5c7fc38975a9c308e0913a0416 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_cca5a2f6a48dc91b31fea21a8bf85dcf.setIcon(icon_e3309a5c7fc38975a9c308e0913a0416);
+        
+    
+        var popup_e82d4bda39a97090e8c0d1b2b16ff64f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d74941110e064bd4ebf731aa5291620e = $(`<div id="html_d74941110e064bd4ebf731aa5291620e" style="width: 100.0%; height: 100.0%;">State: NH Total Days Stayed: 66.0</div>`)[0];
+                popup_e82d4bda39a97090e8c0d1b2b16ff64f.setContent(html_d74941110e064bd4ebf731aa5291620e);
+            
+        
+
+        marker_cca5a2f6a48dc91b31fea21a8bf85dcf.bindPopup(popup_e82d4bda39a97090e8c0d1b2b16ff64f)
+        ;
+
+        
+    
+    
+            var marker_a7cafcc8a56e08b4130d7106b3988f74 = L.marker(
+                [39.912686307514235, -86.28478770053827],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_f06de18c66076c74444f31e91ef7271e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_a7cafcc8a56e08b4130d7106b3988f74.setIcon(icon_f06de18c66076c74444f31e91ef7271e);
+        
+    
+        var popup_d77d6fe3012886f34f040d89bb0e08c0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_153435daee3f1529bb9bd6381a3cf39b = $(`<div id="html_153435daee3f1529bb9bd6381a3cf39b" style="width: 100.0%; height: 100.0%;">State: IN Total Days Stayed: 160.0</div>`)[0];
+                popup_d77d6fe3012886f34f040d89bb0e08c0.setContent(html_153435daee3f1529bb9bd6381a3cf39b);
+            
+        
+
+        marker_a7cafcc8a56e08b4130d7106b3988f74.bindPopup(popup_d77d6fe3012886f34f040d89bb0e08c0)
+        ;
+
+        
+    
+    
+            var marker_fbd656ffb9441d0ff59e79e508d00722 = L.marker(
+                [39.912686307514235, -86.28478770053827],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_719f5e6828f8942bb70023940011e3df = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_fbd656ffb9441d0ff59e79e508d00722.setIcon(icon_719f5e6828f8942bb70023940011e3df);
+        
+    
+        var popup_15071753907ffab836866af1f588206f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6cc5b7774f97436fb64b8e13afea4716 = $(`<div id="html_6cc5b7774f97436fb64b8e13afea4716" style="width: 100.0%; height: 100.0%;">State: IN Total Days Stayed: 333.0</div>`)[0];
+                popup_15071753907ffab836866af1f588206f.setContent(html_6cc5b7774f97436fb64b8e13afea4716);
+            
+        
+
+        marker_fbd656ffb9441d0ff59e79e508d00722.bindPopup(popup_15071753907ffab836866af1f588206f)
+        ;
+
+        
+    
+    
+            var marker_94108a820cfca99cdb0307bca5f67015 = L.marker(
+                [39.912686307514235, -86.28478770053827],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_24f1aae978eb147995a581857e30aad9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_94108a820cfca99cdb0307bca5f67015.setIcon(icon_24f1aae978eb147995a581857e30aad9);
+        
+    
+        var popup_5e699aa3814d09c889dd93abb0935a4a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_22eda76789d269022674fceb6ad1c693 = $(`<div id="html_22eda76789d269022674fceb6ad1c693" style="width: 100.0%; height: 100.0%;">State: IN Total Days Stayed: 131.0</div>`)[0];
+                popup_5e699aa3814d09c889dd93abb0935a4a.setContent(html_22eda76789d269022674fceb6ad1c693);
+            
+        
+
+        marker_94108a820cfca99cdb0307bca5f67015.bindPopup(popup_5e699aa3814d09c889dd93abb0935a4a)
+        ;
+
+        
+    
+    
+            var marker_3368accbba99c5c7c519981ef3682968 = L.marker(
+                [64.37552888232169, -152.82595656620205],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_ba982ba4f4a2aee82a127da8444cade1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_3368accbba99c5c7c519981ef3682968.setIcon(icon_ba982ba4f4a2aee82a127da8444cade1);
+        
+    
+        var popup_e1f88d859d8d8ad5a5cfe025d110ad58 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e7b0430be096abaa6ca2acc3de4258a3 = $(`<div id="html_e7b0430be096abaa6ca2acc3de4258a3" style="width: 100.0%; height: 100.0%;">State: AK Total Days Stayed: 261.0</div>`)[0];
+                popup_e1f88d859d8d8ad5a5cfe025d110ad58.setContent(html_e7b0430be096abaa6ca2acc3de4258a3);
+            
+        
+
+        marker_3368accbba99c5c7c519981ef3682968.bindPopup(popup_e1f88d859d8d8ad5a5cfe025d110ad58)
+        ;
+
+        
+    
+    
+            var marker_87daf2311a392ee8ce70da1e743362bb = L.marker(
+                [64.37552888232169, -152.82595656620205],
+                {}
+            ).addTo(marker_cluster_2838c61d0759f6a79e13d667febaf797);
+        
+    
+            var icon_e2f5830744728d0ce03e764bca02862f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_87daf2311a392ee8ce70da1e743362bb.setIcon(icon_e2f5830744728d0ce03e764bca02862f);
+        
+    
+        var popup_6f426464dc3c86e6159f569e95dfedc6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4fb5a83730bfde4df84bbca430a70060 = $(`<div id="html_4fb5a83730bfde4df84bbca430a70060" style="width: 100.0%; height: 100.0%;">State: AK Total Days Stayed: 286.0</div>`)[0];
+                popup_6f426464dc3c86e6159f569e95dfedc6.setContent(html_4fb5a83730bfde4df84bbca430a70060);
+            
+        
+
+        marker_87daf2311a392ee8ce70da1e743362bb.bindPopup(popup_6f426464dc3c86e6159f569e95dfedc6)
+        ;
+
+        
+    
+    
+            marker_cluster_2838c61d0759f6a79e13d667febaf797.addTo(map_6993ca1695d3f827630bf6e03531ffdb);
+        
+</script>
+</html>
