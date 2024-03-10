@@ -3,14 +3,18 @@ import folium
 from folium import plugins
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 class GeoSpatialGraph:
-    def __init__(self, csv_file):
+    def __init__(self, csv_file, launch_graph=True):
         self.csv_file = csv_file
+        self.launch_graph = launch_graph
         self.df = None
         self.us_states = None
         self.merged_data = None
         self.map = None
+        self.html_outputs = []  # List to store HTML outputs
 
     def read_csv(self):
         self.df = pd.read_csv(self.csv_file)
@@ -56,8 +60,89 @@ class GeoSpatialGraph:
         print("\nMerged Dataset:")
         print(self.merged_data.head())
 
+    def generate_visits_graph(self, html_file_path):
+        # Extract the year from the visited_date column
+        self.df['Year'] = pd.to_datetime(self.df['visited_date']).dt.year
 
-    def create_map(self):
+        # Group by state and year, count the number of visits
+        grouped_data = self.df.groupby(['state_abbr', 'Year']).size().reset_index(name='Visits')
+
+        # Pivot the data for easy plotting
+        pivot_data = grouped_data.pivot(index='Year', columns='state_abbr', values='Visits').fillna(0)
+
+        # Plotting
+        fig, ax = plt.subplots(figsize=(10, 6))
+        bars = pivot_data.plot(kind='bar', stacked=True, ax=ax)
+        
+        plt.xlabel('Year')
+        plt.ylabel('# of Visits')
+        plt.title('Number of Visits by State Over the Years')
+        plt.legend(title='State', bbox_to_anchor=(1, 1))
+
+        # Add data labels to each bar
+        for bar in bars.patches:
+            yval = bar.get_height()
+            plt.text(bar.get_x() + bar.get_width() / 2, yval, round(yval, 2), ha='center', va='top')
+        
+        if(self.launch_graph):
+            plt.show()
+
+        with open(html_file_path, 'r', encoding='utf-8') as file:
+            self.html_outputs.append(file.read())  # Append HTML content to the list
+    
+    def generate_state_wise_visits_graph(self, html_file_path):
+        # Group by state, calculate the total number of days stayed
+        total_days_per_state = self.df.groupby('State_Name')['Days_stayed'].sum()
+
+        # Plotting
+        fig, ax = plt.subplots(figsize=(12, 6))
+        bars = total_days_per_state.sort_values().plot(kind='bar', ax=ax, color='blue', alpha=0.7)
+        plt.xlabel('State Name')
+        plt.ylabel('Total Days Stayed')
+        plt.title('Total Number of Days Stayed in Each State')
+
+        # Add data labels to each bar
+        for bar in bars.patches:
+            yval = bar.get_height()
+            plt.text(bar.get_x() + bar.get_width() / 2, yval, round(yval, 2), ha='center', va='bottom')
+
+        plt.xticks(rotation=45, ha='right')  # Rotate state names for better readability
+        plt.tight_layout()
+
+        if(self.launch_graph):
+            plt.show()
+
+        with open(html_file_path, 'r', encoding='utf-8') as file:
+            self.html_outputs.append(file.read())  # Append HTML content to the list
+
+
+    def generate_average_visits_graph(self, html_file_path):
+        # Extract the year from the visited_date column
+        self.df['Year'] = pd.to_datetime(self.df['visited_date']).dt.year
+
+        # Group by year, calculate the average number of days stayed
+        avg_days_per_year = self.df.groupby('Year')['Days_stayed'].mean()
+
+        # Plotting
+        fig, ax = plt.subplots(figsize=(10, 6))
+        bars = avg_days_per_year.plot(kind='bar', ax=ax, color='blue', alpha=0.7)
+        plt.xlabel('Year')
+        plt.ylabel('Average Days Stayed')
+        plt.title('Average Number of Days Stayed Over the Years')
+        
+        # Add data labels to each bar
+        for bar in bars.patches:
+            yval = bar.get_height()
+            plt.text(bar.get_x() + bar.get_width() / 2, yval, round(yval, 2), ha='center', va='top')
+
+        if(self.launch_graph):
+            plt.show()
+
+        # Save the map as an HTML file
+        with open(html_file_path, 'r', encoding='utf-8') as file:
+            self.html_outputs.append(file.read())  # Append HTML content to the list
+
+    def generate_geo_spatial_graph(self, html_file_path):
         # Create a Folium map centered around the USA
         self.map = folium.Map(location=[37, -95], zoom_start=4)
 
@@ -77,22 +162,28 @@ class GeoSpatialGraph:
                     icon=folium.Icon(color=row['Color'])
                 ).add_to(marker_cluster)
 
-    def save_map_html(self, html_file_path):
         # Save the map as an HTML file
-        self.map.save(html_file_path)
+        # self.map.save(html_file_path)
+        # with open(html_file_path, 'r', encoding='utf-8') as file:
+        #    self.html_outputs.append(file.read())  # Append HTML content to the list
 
-    def run(self):
+    def run_generate_geo_spatial_graph(self):
         self.read_csv()
         self.process_data()
-        self.create_map()
+        self.generate_geo_spatial_graph(html_file_path="generate_geo_spatial_graph.html")
+
+    def run_generate_other_graph(self):
+        self.read_csv()
+        self.process_data()
+        self.generate_visits_graph(html_file_path="html_files\generate_visits_graph.html")
+        self.generate_average_visits_graph(html_file_path="html_files\generate_average_visits_graph.html")
+        self.generate_state_wise_visits_graph(html_file_path="html_files\generate_state_wise_visits_graph.html")
 
 if __name__ == '__main__':
     # Usage example 1:
-    geo_graph = GeoSpatialGraph('MyUSAVisit.csv')
+    geo_graph = GeoSpatialGraph('MyUSAVisit.csv', launch_graph=True)
     geo_graph.run()
-    geo_graph.save_map_html('MyUSAVisit.html')
 
     # Usage example 2:
-    geo_graph = GeoSpatialGraph('FullMyUSAVisit.csv')
+    geo_graph = GeoSpatialGraph('FullMyUSAVisit.csv', launch_graph=True)
     geo_graph.run()
-    geo_graph.save_map_html('FullMyUSAVisit.html')
