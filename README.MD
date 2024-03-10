@@ -1,8 +1,8 @@
-# Car Crashes Dashboard
+# My USA Visit Dashboard
 
 ## Overview
 
-This project generates dashboards for car crash data using Python. It utilizes various libraries, such as Geopandas, Folium, Pandas, HoloViews, NumPy, and Matplotlib, to create interactive and informative visualizations.
+This project generates dashboards based on my USA Visit data using Python. It utilizes various libraries, such as Geopandas, Folium, Pandas, HoloViews, NumPy, and Matplotlib, to create interactive and informative visualizations.
 
 ## Installation
 
@@ -19,6 +19,7 @@ This will install the required packages specified in `pyproject.toml`.
 ### Data Sources
 
 Make sure you have the necessary data sources before running the program. The project uses the `ne_110m_admin_1_states_provinces` shapefile to map the United States.
+this can be downloaded from https://indexhu.carto.com/tables/ne_110m_admin_1_states_provinces_lines/public
 
 ### Running the Program
 
@@ -57,5 +58,5 @@ If you have any questions or suggestions, feel free to contact:
 ```bash
 - Author: ShanKonduru
 - Email: ShanKonduru@gmail.com
+- Git Repository: https://github.com/ShanKonduru/MyUSAVisitsPlot
 ```
-
