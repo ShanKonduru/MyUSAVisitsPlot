@@ -8,11 +8,11 @@
 </head>
 <body>
     <div>
-        <a href="{{ url_for('html_files', filename='generate_state_wise_visits_graph.html') }}" target="_blank">State Wise Visits Graph</a>
+        <a href="{{ url_for('html_files', filename='Total_Number_of_Days_Stayed_in_Each_State.html') }}" target="_blank">Total Number of Days Stayed in Each State</a>
         <br>
-        <a href="{{ url_for('html_files', filename='generate_average_visits_graph.html') }}" target="_blank">Average Visits Graph</a>
+        <a href="{{ url_for('html_files', filename='Number_of_Visits_by_State_Over_the_Years.html') }}" target="_blank">Number of Visits by State Over the Years</a>
         <br>
-        <a href="{{ url_for('html_files', filename='generate_visits_graph.html') }}" target="_blank">Visits Graph</a>
+        <a href="{{ url_for('html_files', filename='Average_Number_of_Days_Stayed_Over_the_Years.html') }}" target="_blank">Average Number of Days Stayed Over the Years</a>
         <br>
         <!-- Include other graphs -->
         {{ other_graphs|safe }}

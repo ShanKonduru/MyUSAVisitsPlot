@@ -16,6 +16,20 @@ class GeoSpatialGraph:
         self.map = None
         self.html_outputs = []  # List to store HTML outputs
 
+    def generate_html_page(self, title, description, image_src, image_alt, template_path, output_file):
+        # Read the HTML template from the specified file
+        with open(template_path, "r") as template_file:
+            html_template = template_file.read()
+
+        # Format the HTML template with the provided values
+        final_html = html_template.format(title=title, description=description, image_src=image_src, image_alt=image_alt)
+
+        # Write the HTML content to the specified file
+        with open(output_file, "w") as html_file:
+            html_file.write(final_html)
+
+        print(f"HTML page generated successfully. Saved to {output_file}")
+ 
     def read_csv(self):
         self.df = pd.read_csv(self.csv_file)
         self.df.columns = self.df.columns.str.strip()
@@ -60,7 +74,8 @@ class GeoSpatialGraph:
         print("\nMerged Dataset:")
         print(self.merged_data.head())
 
-    def generate_visits_graph(self, html_file_path):
+    def generate_visits_graph(self):
+        title = 'Number of Visits by State Over the Years'
         # Extract the year from the visited_date column
         self.df['Year'] = pd.to_datetime(self.df['visited_date']).dt.year
 
@@ -76,21 +91,34 @@ class GeoSpatialGraph:
         
         plt.xlabel('Year')
         plt.ylabel('# of Visits')
-        plt.title('Number of Visits by State Over the Years')
+        plt.title(title)
         plt.legend(title='State', bbox_to_anchor=(1, 1))
 
         # Add data labels to each bar
         for bar in bars.patches:
             yval = bar.get_height()
             plt.text(bar.get_x() + bar.get_width() / 2, yval, round(yval, 2), ha='center', va='top')
-        
+
+        image_file = title.replace(' ', '_') + ".png"
+        plt.savefig(image_file)
+
         if(self.launch_graph):
             plt.show()
+            plt.close()
+        
+        html_file_name = "html_files/" + title.replace(' ', '_') + ".html"
 
-        with open(html_file_path, 'r', encoding='utf-8') as file:
-            self.html_outputs.append(file.read())  # Append HTML content to the list
-    
-    def generate_state_wise_visits_graph(self, html_file_path):
+        self.generate_html_page(
+            title=title,
+            description='Number of Visits by State Over the Years',
+            image_src=image_file,
+            image_alt=image_file,
+            template_path="templates/image_html_template.html",
+            output_file=html_file_name
+        )
+        
+    def generate_state_wise_visits_graph(self):
+        title = 'Total Number of Days Stayed in Each State'
         # Group by state, calculate the total number of days stayed
         total_days_per_state = self.df.groupby('State_Name')['Days_stayed'].sum()
 
@@ -99,7 +127,7 @@ class GeoSpatialGraph:
         bars = total_days_per_state.sort_values().plot(kind='bar', ax=ax, color='blue', alpha=0.7)
         plt.xlabel('State Name')
         plt.ylabel('Total Days Stayed')
-        plt.title('Total Number of Days Stayed in Each State')
+        plt.title(title)
 
         # Add data labels to each bar
         for bar in bars.patches:
@@ -109,14 +137,28 @@ class GeoSpatialGraph:
         plt.xticks(rotation=45, ha='right')  # Rotate state names for better readability
         plt.tight_layout()
 
+        image_file = title.replace(' ', '_') + ".png"
+        plt.savefig(image_file)
+
         if(self.launch_graph):
             plt.show()
+            plt.close()
 
-        with open(html_file_path, 'r', encoding='utf-8') as file:
-            self.html_outputs.append(file.read())  # Append HTML content to the list
+        html_file_name = "html_files/" + title.replace(' ', '_') + ".html"
+
+        self.generate_html_page(
+            title=title,
+            description='Total Number of Days Stayed in Each State',
+            image_src=image_file,
+            image_alt=image_file,
+            template_path="templates/image_html_template.html",
+            output_file=html_file_name
+        )
 
 
-    def generate_average_visits_graph(self, html_file_path):
+    def generate_average_visits_graph(self):
+        title = 'Average Number of Days Stayed Over the Years'
+
         # Extract the year from the visited_date column
         self.df['Year'] = pd.to_datetime(self.df['visited_date']).dt.year
 
@@ -128,19 +170,31 @@ class GeoSpatialGraph:
         bars = avg_days_per_year.plot(kind='bar', ax=ax, color='blue', alpha=0.7)
         plt.xlabel('Year')
         plt.ylabel('Average Days Stayed')
-        plt.title('Average Number of Days Stayed Over the Years')
+        plt.title(title)
         
         # Add data labels to each bar
         for bar in bars.patches:
             yval = bar.get_height()
             plt.text(bar.get_x() + bar.get_width() / 2, yval, round(yval, 2), ha='center', va='top')
 
+        image_file = title.replace(' ', '_') + ".png"
+        plt.savefig(image_file)
+
         if(self.launch_graph):
             plt.show()
+            plt.close()
 
-        # Save the map as an HTML file
-        with open(html_file_path, 'r', encoding='utf-8') as file:
-            self.html_outputs.append(file.read())  # Append HTML content to the list
+        html_file_name = "html_files/" + title.replace(' ', '_') + ".html"
+
+        self.generate_html_page(
+            title=title,
+            description='Average Number of Days Stayed Over the Years',
+            image_src=image_file,
+            image_alt=image_file,
+            template_path="templates/image_html_template.html",
+            output_file=html_file_name
+        )
+
 
     def generate_geo_spatial_graph(self, html_file_path):
         # Create a Folium map centered around the USA
@@ -163,21 +217,19 @@ class GeoSpatialGraph:
                 ).add_to(marker_cluster)
 
         # Save the map as an HTML file
-        # self.map.save(html_file_path)
-        # with open(html_file_path, 'r', encoding='utf-8') as file:
-        #    self.html_outputs.append(file.read())  # Append HTML content to the list
-
+        self.map.save(html_file_path)
+        
     def run_generate_geo_spatial_graph(self):
         self.read_csv()
         self.process_data()
-        self.generate_geo_spatial_graph(html_file_path="generate_geo_spatial_graph.html")
+        self.generate_geo_spatial_graph(html_file_path="html_files\generate_geo_spatial_graph.html")
 
     def run_generate_other_graph(self):
         self.read_csv()
         self.process_data()
-        self.generate_visits_graph(html_file_path="html_files\generate_visits_graph.html")
-        self.generate_average_visits_graph(html_file_path="html_files\generate_average_visits_graph.html")
-        self.generate_state_wise_visits_graph(html_file_path="html_files\generate_state_wise_visits_graph.html")
+        self.generate_visits_graph()
+        self.generate_average_visits_graph()
+        self.generate_state_wise_visits_graph()
 
 if __name__ == '__main__':
     # Usage example 1:

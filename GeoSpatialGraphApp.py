@@ -56,5 +56,11 @@ def other_graphs():
 def html_files(filename):
     return send_from_directory(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'html_files'), filename)
 
+# Serve IMAGE files directly without using send_file
+@app.route('/<path:filename>')
+def image_files(filename):
+    return send_from_directory(os.path.join(os.path.abspath(os.path.dirname(__file__)), '.'), filename)
+
+
 if __name__ == '__main__':
     app.run(host='localhost', port=5050, debug=True)
