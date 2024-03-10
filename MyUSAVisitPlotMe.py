@@ -5,7 +5,8 @@ import pandas as pd
 import numpy as np
 
 # Replace 'your_file.csv' with the actual name of your CSV file
-csv_file = 'FullMyUSAVisit.csv'
+# csv_file = 'FullMyUSAVisit.csv'
+csv_file = 'MyUSAVisit.csv'
 
 # Read the CSV file into a pandas DataFrame
 df = pd.read_csv(csv_file)
