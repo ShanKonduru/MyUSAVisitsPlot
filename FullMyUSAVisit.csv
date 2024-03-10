@@ -1,50 +1,50 @@
-visited_date,RowNo,state_abbr,State_Name,Days_stayed
-8-Jul-12,8,CT,Connecticut,160
-16-Jul-00,55,MP,Northern Mariana Islands,229
-30-Sep-09,48,WA,Washington,228
-24-May-16,3,AK,Alaska,261
-26-Oct-21,38,OR,Oregon,66
-13-Jan-17,53,AS,American Samoa,286
-2-Apr-07,15,IN,Indiana,333
-19-Feb-21,22,MA,Massachusetts,131
-11-Oct-06,42,SD,South Dakota,360
-17-Aug-18,30,NH,New Hampshire,274
-19-May-13,38,OR,Oregon,244
-12-Sep-07,48,WA,Washington,349
-3-Mar-04,38,OR,Oregon,11
-21-Apr-14,4,AZ,Arizona,12
-20-Dec-17,27,MT,Montana,66
-26-Nov-22,18,KY,Kentucky,212
-24-Jul-02,9,DE,Delaware,149
-23-Jan-03,13,ID,Idaho,263
-22-Sep-10,47,VA,Virginia,306
-15-Jul-10,15,IN,Indiana,33
-5-Feb-16,36,OH,Ohio,310
-1-Sep-08,18,KY,Kentucky,201
-20-Apr-14,30,NH,New Hampshire,30
-13-Oct-16,44,TX,Texas,301
-18-Jan-06,45,UT,Utah,205
-26-Jan-06,48,WA,Washington,260
-21-Apr-18,42,SD,South Dakota,97
-16-Jul-17,37,OK,Oklahoma,141
-6-Jul-08,31,NJ,New Jersey,114
-25-Aug-03,20,ME,Maine,120
-28-Jan-23,41,SC,South Carolina,355
-22-May-00,29,NV,Nevada,195
-13-Jun-00,21,MD,Maryland,296
-28-Sep-04,44,TX,Texas,314
-31-Dec-00,2,AL,Alabama,340
-19-Apr-05,40,RI,Rhode Island,263
-12-Dec-10,19,LA,Louisiana,101
-17-Aug-11,49,WV,West Virginia,303
-22-Jun-04,16,IA,Iowa,220
-4-Dec-06,38,OR,Oregon,327
-30-Jan-16,11,GA,Georgia,337
-27-Jul-03,42,SD,South Dakota,142
-18-Jan-22,20,ME,Maine,334
-13-Jan-00,22,MA,Massachusetts,25
-24-Oct-12,27,MT,Montana,162
-2-Feb-11,38,OR,Oregon,198
-10-May-07,45,UT,Utah,296
-13-Sep-13,18,KY,Kentucky,137
-21-Apr-15,18,KY,Kentucky,244
+visited_date,RowNo,state_abbr,State_Name,Days_stayed,Months,RAG
+8-Jul-12,8,CT,Connecticut,160,5,Amber
+16-Jul-00,55,MP,Northern Mariana Islands,229,8,Amber
+30-Sep-09,48,WA,Washington,228,8,Amber
+24-May-16,3,AK,Alaska,261,9,Amber
+26-Oct-21,38,OR,Oregon,66,2,RED
+13-Jan-17,53,AS,American Samoa,286,10,GREEN
+2-Apr-07,15,IN,Indiana,333,11,GREEN
+19-Feb-21,22,MA,Massachusetts,131,4,Amber
+11-Oct-06,42,SD,South Dakota,360,12,GREEN
+17-Aug-18,30,NH,New Hampshire,274,9,Amber
+19-May-13,38,OR,Oregon,244,8,Amber
+12-Sep-07,48,WA,Washington,349,12,GREEN
+3-Mar-04,38,OR,Oregon,11,0,RED
+21-Apr-14,4,AZ,Arizona,12,0,RED
+20-Dec-17,27,MT,Montana,66,2,RED
+26-Nov-22,18,KY,Kentucky,212,7,Amber
+24-Jul-02,9,DE,Delaware,149,5,Amber
+23-Jan-03,13,ID,Idaho,263,9,Amber
+22-Sep-10,47,VA,Virginia,306,10,GREEN
+15-Jul-10,15,IN,Indiana,33,1,RED
+5-Feb-16,36,OH,Ohio,310,10,GREEN
+1-Sep-08,18,KY,Kentucky,201,7,Amber
+20-Apr-14,30,NH,New Hampshire,30,1,RED
+13-Oct-16,44,TX,Texas,301,10,GREEN
+18-Jan-06,45,UT,Utah,205,7,Amber
+26-Jan-06,48,WA,Washington,260,9,Amber
+21-Apr-18,42,SD,South Dakota,97,3,RED
+16-Jul-17,37,OK,Oklahoma,141,5,Amber
+6-Jul-08,31,NJ,New Jersey,114,4,Amber
+25-Aug-03,20,ME,Maine,120,4,Amber
+28-Jan-23,41,SC,South Carolina,355,12,GREEN
+22-May-00,29,NV,Nevada,195,7,Amber
+13-Jun-00,21,MD,Maryland,296,10,GREEN
+28-Sep-04,44,TX,Texas,314,10,GREEN
+31-Dec-00,2,AL,Alabama,340,11,GREEN
+19-Apr-05,40,RI,Rhode Island,263,9,Amber
+12-Dec-10,19,LA,Louisiana,101,3,RED
+17-Aug-11,49,WV,West Virginia,303,10,GREEN
+22-Jun-04,16,IA,Iowa,220,7,Amber
+4-Dec-06,38,OR,Oregon,327,11,GREEN
+30-Jan-16,11,GA,Georgia,337,11,GREEN
+27-Jul-03,42,SD,South Dakota,142,5,Amber
+18-Jan-22,20,ME,Maine,334,11,GREEN
+13-Jan-00,22,MA,Massachusetts,25,1,RED
+24-Oct-12,27,MT,Montana,162,5,Amber
+2-Feb-11,38,OR,Oregon,198,7,Amber
+10-May-07,45,UT,Utah,296,10,GREEN
+13-Sep-13,18,KY,Kentucky,137,5,Amber
+21-Apr-15,18,KY,Kentucky,244,8,Amber

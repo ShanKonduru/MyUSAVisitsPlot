@@ -2,6 +2,7 @@ import geopandas as gpd
 import folium
 from folium import plugins
 import pandas as pd
+import numpy as np
 
 # Replace 'your_file.csv' with the actual name of your CSV file
 csv_file = 'FullMyUSAVisit.csv'
@@ -12,8 +13,20 @@ df = pd.read_csv(csv_file)
 # Remove leading and trailing spaces from column names
 df.columns = df.columns.str.strip()
 
-# Update 'state_abbr' values by removing the 'US-' prefix
-df['state_abbr'] = df['state_abbr'].str.replace('US-', '')
+# Assuming you have a 'Months' column in your DataFrame
+months = df['Months']
+
+# Define conditions and corresponding colors
+conditions = [
+    (months <= 3),
+    (months >= 10),
+    (months > 3) & (months < 10)
+]
+
+colors = ['red', 'green', 'orange']  # Adjust colors as needed
+
+# Add 'Color' column based on conditions
+df['Color'] = np.select(conditions, colors, default='black')
 
 # Print the first few rows of the CSV data
 print("CSV Data:")
@@ -25,10 +38,6 @@ us_states = gpd.read_file('ne_110m_admin_1_states_provinces.shp')
 
 # Remove the 'US-' prefix from the 'iso_3166_2' column in the shapefile
 us_states['iso_3166_2'] = us_states['iso_3166_2'].str.replace('US-', '')
-
-# Print the first few rows of the US states shapefile data
-print("\nUS States Shapefile Data:")
-print(us_states.head())
 
 # Merge the US states GeoDataFrame with your data based on the 'iso_3166_2' column
 merged_data = us_states.merge(df, how='left', left_on='iso_3166_2', right_on='state_abbr')
@@ -49,13 +58,15 @@ marker_cluster = plugins.MarkerCluster().add_to(m)
 # Iterate over each row in the merged data and add markers only for states with data
 for index, row in merged_data.iterrows():
     if not pd.isnull(row['Days_stayed']) and row['Days_stayed'] > 0:
-        state_abbr = row['state_abbr']
-        days_stayed = row['Days_stayed']
-        tooltip = f"State: {state_abbr}\nTotal Days Stayed: {days_stayed}"
+        tooltip = f"State: {row['state_abbr']} Total Days Stayed: {row['Days_stayed']}"
 
         # Add markers to the Marker Cluster
-        folium.Marker([row['geometry'].centroid.y, row['geometry'].centroid.x],
-                      popup=tooltip).add_to(marker_cluster)
+        # Customize the icon color based on the 'Color' column
+        folium.Marker(
+            location=[row['geometry'].centroid.y, row['geometry'].centroid.x],
+            popup=tooltip,
+            icon=folium.Icon(color=row['Color'])
+        ).add_to(marker_cluster)
 
 # Save the map as an HTML file
 m.save('visited_places_map.html')
