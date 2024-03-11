@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime
-
+import os
 
 class GeoSpatialGraph:
     def __init__(self, csv_file, launch_graph=True):
@@ -16,7 +16,22 @@ class GeoSpatialGraph:
         self.merged_data = None
         self.map = None
         self.html_outputs = []  # List to store HTML outputs
-        
+    
+    def generate_html_image_gallery(self, folder_path = '.\\SampleImages\\'):
+        images = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f)) and f.endswith(('jpg', 'jpeg', 'png', 'gif'))]
+
+        html = "<!DOCTYPE html><html><head><title>Image Gallery</title></head><body>"
+        html += "<h1>Image Gallery</h1>"
+        html += "<div class='gallery'>"
+
+        for image in images:
+            html += f"<img src='{os.path.join(folder_path, image)}' alt='{image}'>"
+
+        html += "</div></body></html>"
+
+        with open("image_gallery.html", "w") as file:
+            file.write(html)
+            
     def generate_datetime_stamp(self):
         # Generates a datetime stamp in ISO 8601 format.
         # Returns: str: Datetime stamp string in the format 'YYYY-MM-DDTHH-MM-SS'.
@@ -234,6 +249,7 @@ class GeoSpatialGraph:
         self.read_csv()
         self.process_data()
         self.generate_geo_spatial_graph(html_file_path="html_files\generate_geo_spatial_graph.html")
+        self.generate_html_image_gallery()
 
     def run_generate_other_graph(self):
         self.read_csv()
@@ -241,6 +257,7 @@ class GeoSpatialGraph:
         self.generate_visits_graph()
         self.generate_average_visits_graph()
         self.generate_state_wise_visits_graph()
+        self.generate_html_image_gallery()
 
 if __name__ == '__main__':
     # Usage example 1:
