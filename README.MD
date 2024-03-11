@@ -57,9 +57,6 @@ poetry install --dev
 ## Sample HTML Page
 
 Here is the content of a sample HTML page:
-
-<iframe src="https://github.com/ShanKonduru/MyUSAVisitsPlot/blob/master/html_files/generate_geo_spatial_graph.html" width="600" height="400"></iframe>
-
 [Link to Sample HTML Page](https://github.com/ShanKonduru/MyUSAVisitsPlot/blob/master/html_files/generate_geo_spatial_graph.html)
 
 
