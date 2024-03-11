@@ -47,7 +47,12 @@ If you want to contribute or modify the code, create a virtual environment and i
 poetry install --dev
 ```
 
-## Sample HTML
+## Sample Graphs 
+
+![Image](https://github.com/ShanKonduru/MyUSAVisitsPlot/blob/master/SampleImages/USA%20Level%200%20Zoom.PNG)
+![Image](https://github.com/ShanKonduru/MyUSAVisitsPlot/blob/master/SampleImages/USA%20Level%202%20Zoom.PNG)
+![Image](https://github.com/ShanKonduru/MyUSAVisitsPlot/blob/master/SampleImages/USA%20Level%203%20Zoom.PNG)
+![Image](https://github.com/ShanKonduru/MyUSAVisitsPlot/blob/master/SampleImages/USA%20Level%204%20Zoom.PNG)
 
 ## Sample HTML Page
 
