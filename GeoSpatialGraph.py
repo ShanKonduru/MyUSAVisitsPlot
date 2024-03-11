@@ -4,6 +4,7 @@ from folium import plugins
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import datetime
 
 
 class GeoSpatialGraph:
@@ -15,6 +16,13 @@ class GeoSpatialGraph:
         self.merged_data = None
         self.map = None
         self.html_outputs = []  # List to store HTML outputs
+        
+    def generate_datetime_stamp(self):
+        # Generates a datetime stamp in ISO 8601 format.
+        # Returns: str: Datetime stamp string in the format 'YYYY-MM-DDTHH-MM-SS'.
+        now = datetime.now()
+        datetime_stamp = now.strftime("_%Y%m%d%H%M%S_")
+        return datetime_stamp
 
     def generate_html_page(self, title, description, image_src, image_alt, template_path, output_file):
         # Read the HTML template from the specified file
@@ -87,7 +95,7 @@ class GeoSpatialGraph:
 
         # Plotting
         fig, ax = plt.subplots(figsize=(10, 6))
-        bars = pivot_data.plot(kind='bar', stacked=True, ax=ax)
+        bars = pivot_data.plot(kind='bar', stacked=False, ax=ax)
         
         plt.xlabel('Year')
         plt.ylabel('# of Visits')
@@ -98,8 +106,9 @@ class GeoSpatialGraph:
         for bar in bars.patches:
             yval = bar.get_height()
             plt.text(bar.get_x() + bar.get_width() / 2, yval, round(yval, 2), ha='center', va='top')
-
-        image_file = title.replace(' ', '_') + ".png"
+            
+        timestamp = self.generate_datetime_stamp()
+        image_file = "SampleImages/" + title.replace(' ', '_') +  timestamp + ".png"
         plt.savefig(image_file)
 
         if(self.launch_graph):
@@ -137,7 +146,8 @@ class GeoSpatialGraph:
         plt.xticks(rotation=45, ha='right')  # Rotate state names for better readability
         plt.tight_layout()
 
-        image_file = title.replace(' ', '_') + ".png"
+        timestamp = self.generate_datetime_stamp()
+        image_file = "SampleImages/" + title.replace(' ', '_') +  timestamp + ".png"
         plt.savefig(image_file)
 
         if(self.launch_graph):
@@ -177,7 +187,8 @@ class GeoSpatialGraph:
             yval = bar.get_height()
             plt.text(bar.get_x() + bar.get_width() / 2, yval, round(yval, 2), ha='center', va='top')
 
-        image_file = title.replace(' ', '_') + ".png"
+        timestamp = self.generate_datetime_stamp()
+        image_file = "SampleImages/" + title.replace(' ', '_') +  timestamp + ".png"
         plt.savefig(image_file)
 
         if(self.launch_graph):
@@ -234,8 +245,9 @@ class GeoSpatialGraph:
 if __name__ == '__main__':
     # Usage example 1:
     geo_graph = GeoSpatialGraph('MyUSAVisit.csv', launch_graph=True)
-    geo_graph.run()
-
+    geo_graph.run_generate_geo_spatial_graph()
+    geo_graph.run_generate_other_graph()
     # Usage example 2:
     geo_graph = GeoSpatialGraph('FullMyUSAVisit.csv', launch_graph=True)
-    geo_graph.run()
+    geo_graph.run_generate_geo_spatial_graph()
+    geo_graph.run_generate_other_graph()
