@@ -1,8 +1,8 @@
-# My USA Visit Dashboard
+# Cartographic Insights - Unveiling Real-World Data Stories Through Map-based Visualization. 
 
 ## Overview
 
-This project generates dashboards based on my USA Visit data using Python. It utilizes various libraries, such as Geopandas, Folium, Pandas, HoloViews, NumPy, and Matplotlib, to create interactive and informative visualizations.
+This project generates dashboards based on cartographic data using Python. It utilizes various libraries, such as Geopandas, Folium, Pandas, HoloViews, NumPy, and Matplotlib, to create interactive and informative visualizations.
 
 ## Installation
 
